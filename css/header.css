@@ -1,0 +1,37 @@
+/* flex start */
+.buttonChoice-flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#header-flex{
+  margin: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* flex end */
+
+/* buttons/text start */
+.select-player-buttonX,
+.select-player-buttonO{
+  border: 3px solid #2C7865;
+  width: 100px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color:#2C7865;
+  cursor: pointer;
+}
+.select-player-buttonO{
+  border-left: none;
+  font-size: 23px;
+}
+.header-text{
+  color: #1b4b3f;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 1em;
+}
+/* buttons/text end */

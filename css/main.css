@@ -1,0 +1,42 @@
+/* grid start */
+.grid-layout{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+.grid-element{
+  height: 100px;
+  width: 100px;
+  border: 3px solid #2C7865;
+  cursor: pointer;
+}
+/* grid end */
+
+/* flex start */
+#main-flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+.grid-flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* flex end */
+
+/* Removing borders to re-create standard ticTacToe UI */
+.one, .two, .three
+{
+  border-top: none;
+}
+.seven, .eight, .nine{
+  border-bottom: none
+}
+.one, .four, .seven{
+  border-left: none;
+}
+.three, .six, .nine{
+  border-right: none;
+}
+/* end of removing borders from elements */

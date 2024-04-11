@@ -13,23 +13,23 @@
 <body>
   <header id="header-flex">
     <div class="buttonChoice-flex">
-      <button class="select-player-buttonX">X</button>
-      <button class="select-player-buttonO">O</button>
+      <button class="select-player-buttonX" onclick="playerMoveChoice('X')">X</button>
+      <button class="select-player-buttonO" onclick="playerMoveChoice('O')">O</button>
     </div>
     <p class="header-text">SELECT PLAYER</p>
   </header>
   <main id="main-flex">
     <div class="grid-flex">
       <div class="grid-layout">
-        <div class="grid-element one"></div>
-        <div class="grid-element two"></div>
-        <div class="grid-element three"></div>
-        <div class="grid-element four"></div>
-        <div class="grid-element five"></div>
-        <div class="grid-element six"></div>
-        <div class="grid-element seven"></div>
-        <div class="grid-element eight"></div>
-        <div class="grid-element nine"></div>
+        <div class="grid-element one" id="0" onclick="clickedElement('0')"></div>
+        <div class="grid-element two" id="1" onclick="clickedElement('1')"></div>
+        <div class="grid-element three" id="2" onclick="clickedElement('2')"></div>
+        <div class="grid-element four" id="3" onclick="clickedElement('3')"></div>
+        <div class="grid-element five" id="4" onclick="clickedElement('4')"></div>
+        <div class="grid-element six" id="5" onclick="clickedElement('5')"></div>
+        <div class="grid-element seven" id="6" onclick="clickedElement('6')"></div>
+        <div class="grid-element eight" id="7" onclick="clickedElement('7')"></div>
+        <div class="grid-element nine" id="8" onclick="clickedElement('8')"></div>
       </div>
     </div>
   </main>

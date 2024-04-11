@@ -23,6 +23,16 @@
   align-items: center;
   justify-content: center;
 }
+
+.one,.two,.three,.four,.five,.six,.seven,.eight,.nine{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  color: #1b4b3f;
+  font-weight: bold;
+  font-size: 20px;
+}
 /* flex end */
 
 /* Removing borders to re-create standard ticTacToe UI */

@@ -8,28 +8,32 @@
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/main.css">
   <!-- css end -->
+  <!-- font start -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <!-- font end -->
   <title>tic-tac-toe</title>
 </head>
 <body>
   <header id="header-flex">
     <div class="buttonChoice-flex">
-      <button class="select-player-buttonX" onclick="playerMoveChoice('X')">X</button>
-      <button class="select-player-buttonO" onclick="playerMoveChoice('O')">O</button>
+      <button class="restartBtn">Restart</button>
     </div>
-    <p class="header-text">SELECT PLAYER</p>
+    <p class="statusText">SELECT PLAYER</p>
   </header>
   <main id="main-flex">
     <div class="grid-flex">
       <div class="grid-layout">
-        <div class="grid-element one" id="0" onclick="clickedElement('0')"></div>
-        <div class="grid-element two" id="1" onclick="clickedElement('1')"></div>
-        <div class="grid-element three" id="2" onclick="clickedElement('2')"></div>
-        <div class="grid-element four" id="3" onclick="clickedElement('3')"></div>
-        <div class="grid-element five" id="4" onclick="clickedElement('4')"></div>
-        <div class="grid-element six" id="5" onclick="clickedElement('5')"></div>
-        <div class="grid-element seven" id="6" onclick="clickedElement('6')"></div>
-        <div class="grid-element eight" id="7" onclick="clickedElement('7')"></div>
-        <div class="grid-element nine" id="8" onclick="clickedElement('8')"></div>
+        <div class="grid-element one" cellIndex = "0">0</div>
+        <div class="grid-element two" cellIndex = "1">1</div>
+        <div class="grid-element three" cellIndex = "2">2</div>
+        <div class="grid-element four" cellIndex = "3">3</div>
+        <div class="grid-element five" cellIndex = "4">4</div>
+        <div class="grid-element six" cellIndex = "5">5</div>
+        <div class="grid-element seven" cellIndex = "6">6</div>
+        <div class="grid-element eight" cellIndex = "7">7</div>
+        <div class="grid-element nine" cellIndex = "8">8</div>
       </div>
     </div>
   </main>

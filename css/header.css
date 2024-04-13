@@ -14,8 +14,7 @@
 /* flex end */
 
 /* buttons/text start */
-.select-player-buttonX,
-.select-player-buttonO{
+.restartBtn{
   border: 3px solid #2C7865;
   width: 100px;
   height: 30px;
@@ -24,11 +23,7 @@
   color:#2C7865;
   cursor: pointer;
 }
-.select-player-buttonO{
-  border-left: none;
-  font-size: 23px;
-}
-.header-text{
+.statusText{
   color: #1b4b3f;
   font-weight: bold;
   font-size: 20px;

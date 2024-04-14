@@ -14,3 +14,83 @@ const winningCondition = [
 let options = ["","","","","","","","",""];
 let currentPlayer = "X";
 let running = false;
+
+initializeGame(); 
+
+function initializeGame(){
+  //clicking cell calls cellClicked()
+  gridElement.forEach(gridElement => gridElement.addEventListener('click',cellClicked)); 
+  //show current player
+  statusText.textContent = `${currentPlayer}' turn`;
+  restartBtn.addEventListener('click',restartGame);
+  running = true;
+
+};
+
+//this function is used to get index of a clicked element
+function cellClicked(){ 
+  const cellIndex = this.getAttribute('cellIndex'); //value of this = <div ... cellIndex="i"> < .../div>
+  if (options[cellIndex] != "" ){                   
+    return;
+  }
+  updateCell(this,cellIndex);  // pass this and cellIndex to updateCell to change innerHTML
+};
+
+function updateCell(cell,index){  
+  options[index] = currentPlayer;  // stores currentPlayer in options Array with index of clicked cell
+  cell.innerHTML = currentPlayer;  // prints currentPlayer on the screen ('this' element wich was clicked)
+  checkWinner();
+
+  if(running){           // if game is still running change player
+  changePlayer();
+  }
+  
+};
+
+//function that change player each time its called, switches between X and O
+function changePlayer(){
+  if(currentPlayer !== "O"){
+    currentPlayer = "O";
+  }
+  else currentPlayer = "X";
+  statusText.textContent = `${currentPlayer}' turn`;
+};
+
+// checkWinner fucntion is being called everytime cellUpdate is running
+function checkWinner(){
+  let roundWon = false;
+  for(let i = 0; i<winningCondition.length; i++){   //iterate trough all winningCondition
+    const condition = winningCondition[i]; // i=1 condition = [3,4,5];
+    const cellA = options[condition[0]];
+    const cellB = options[condition[1]];
+    const cellC = options[condition[2]];
+    if (cellA == "" || cellB == "" || cellC ==""){    //skip if any cell is empty
+      continue;
+    }
+    if (cellA == cellB && cellB == cellC ){           //if all cells are same break loop;
+      roundWon = true;
+      break;
+    }
+  }
+  if(roundWon){
+    statusText.textContent = `${currentPlayer} wins!`;      // winner conditions
+    stopGame();
+  }
+  else if(!options.includes("")){                         //if no empty spaces and loop is done, its draw
+    statusText.textContent = `DRAW`;
+    stopGame();
+  }
+};
+
+function restartGame(){             //sets evertythign to default
+  initializeGame();
+  options = ["","","","","","","","",""];
+  currentPlayer = "X";
+  statusText.textContent = `${currentPlayer}' turn`;
+  gridElement.forEach(gridElement => gridElement.innerHTML = "");
+};
+
+function stopGame(){        // removes eventlisteners 
+  gridElement.forEach(gridElement => gridElement.removeEventListener('click',cellClicked));
+  running = false;
+}

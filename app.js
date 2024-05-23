@@ -8,6 +8,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname,'public')));
 
 const options = JSON.parse(fs.readFileSync('./backend/currentOption.json','utf-8'));
+const playerMove = JSON.parse(fs.readFileSync('./backend/currentPlayerMove.json','utf-8'));
 
 app.get('/',(req,res)=>{
   res.status(200).sendFile(__dirname,'public','index.html');
@@ -15,6 +16,10 @@ app.get('/',(req,res)=>{
 
 app.get('/option',(req,res)=>{
   res.status(200).json(options);
+});
+
+app.get('/player',(req,res)=>{
+  res.status(200).json(playerMove);
 });
 
 

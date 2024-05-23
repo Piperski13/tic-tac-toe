@@ -9,7 +9,9 @@ loadData().then((options)=>{
   updateBoard(options);
 })
 
-function renderLogic(currentOptions){
+async function renderLogic(currentOptions){
+  let loadedPlayer = await loadCurrentPlayer();
+  let currentPlayer = loadedPlayer.playerMove;
   let options = currentOptions;
   console.log(options);
 
@@ -28,7 +30,7 @@ function renderLogic(currentOptions){
   ];
 
 
-  let currentPlayer = "X";
+  
   let running = false;
 
   initializeGame(); 

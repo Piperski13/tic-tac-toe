@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname,'public')));
 
 const options = JSON.parse(fs.readFileSync('./backend/currentOption.json','utf-8'));
-console.log(options);
+
 
 app.get('/',(req,res)=>{
   res.status(200).sendFile(__dirname,'public','index.html');

@@ -1,4 +1,5 @@
 import {saveData} from './data/saveData.js';
+import {loadData} from './data/loadData.js';
 const gridElement = document.querySelectorAll('.grid-element');
 const restartBtn = document.querySelector('.restartBtn');
 const statusText = document.querySelector('.statusText');

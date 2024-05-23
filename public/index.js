@@ -1,17 +1,23 @@
+import {saveData} from './data/saveData.js';
 const gridElement = document.querySelectorAll('.grid-element');
 const restartBtn = document.querySelector('.restartBtn');
 const statusText = document.querySelector('.statusText');
 const winningCondition = [
-  [0,1,2],
-  [3,4,5],
-  [6,7,8],
-  [0,3,6],
-  [1,4,7],
-  [2,5,8],
-  [0,4,8],
-  [2,4,6]
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
 ];
-let options = ["","","","","","","","",""];
+
+let options = {
+  0: "", 1: "", 2: "",
+  3: "", 4: "", 5: "",
+  6: "", 7: "", 8: ""
+};
 let currentPlayer = "X";
 let running = false;
 
@@ -36,13 +42,17 @@ function cellClicked(){
   updateCell(this,cellIndex);  // pass this and cellIndex to updateCell to change innerHTML
 };
 
-function updateCell(cell,index){  
+async function updateCell(cell,index){  
   options[index] = currentPlayer;  // stores currentPlayer in options Array with index of clicked cell
   cell.innerHTML = currentPlayer;  // prints currentPlayer on the screen ('this' element wich was clicked)
   checkWinner();
-
-  if(running){           // if game is still running change player
-  changePlayer();
+  try {
+    await saveData(options); //backend - save data
+    if(running){           // if game is still running change player
+      changePlayer();
+    }
+  } catch (error) {
+    console.error('Failed to update data:', error);
   }
   
 };
@@ -72,19 +82,22 @@ function checkWinner(){
       break;
     }
   }
-  if(roundWon){
-    statusText.textContent = `${currentPlayer} wins!`;      // winner conditions
+  if (roundWon) {
+    statusText.textContent = `${currentPlayer} wins!`;
     stopGame();
-  }
-  else if(!options.includes("")){                         //if no empty spaces and loop is done, its draw
-    statusText.textContent = `DRAW`;
+  } else if (Object.values(options).every(cell => cell !== "")) {
+    statusText.textContent = "DRAW";
     stopGame();
   }
 };
 
 function restartGame(){             //sets evertythign to default
   initializeGame();
-  options = ["","","","","","","","",""];
+  options = {
+    0: "", 1: "", 2: "",
+    3: "", 4: "", 5: "",
+    6: "", 7: "", 8: ""
+  };
   currentPlayer = "X";
   statusText.textContent = `${currentPlayer}' turn`;
   gridElement.forEach(gridElement => gridElement.innerHTML = "");

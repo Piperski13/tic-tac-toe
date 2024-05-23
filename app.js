@@ -14,6 +14,11 @@ app.get('/',(req,res)=>{
   res.status(200).sendFile(__dirname,'public','index.html');
 });
 
+app.get('/option',(req,res)=>{
+  res.status(200).json({options});
+});
+
+
 app.post('/options',(req,res)=>{
   const clientOptions = req.body;
   console.log(clientOptions);

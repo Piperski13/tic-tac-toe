@@ -91,13 +91,14 @@ function checkWinner(){
   }
 };
 
-function restartGame(){             //sets evertythign to default
+async function restartGame(){             //sets evertythign to default
   initializeGame();
   options = {
     0: "", 1: "", 2: "",
     3: "", 4: "", 5: "",
     6: "", 7: "", 8: ""
   };
+  await saveData(options);
   currentPlayer = "X";
   statusText.textContent = `${currentPlayer}' turn`;
   gridElement.forEach(gridElement => gridElement.innerHTML = "");

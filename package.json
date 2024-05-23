@@ -1,0 +1,14 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "backend for tic-tac-toe",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aleksa Piperski",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

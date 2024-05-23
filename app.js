@@ -9,13 +9,12 @@ app.use(express.static(path.join(__dirname,'public')));
 
 const options = JSON.parse(fs.readFileSync('./backend/currentOption.json','utf-8'));
 
-
 app.get('/',(req,res)=>{
   res.status(200).sendFile(__dirname,'public','index.html');
 });
 
 app.get('/option',(req,res)=>{
-  res.status(200).json({options});
+  res.status(200).json(options);
 });
 
 

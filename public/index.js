@@ -1,6 +1,8 @@
 import {saveData} from './data/saveData.js';
 import {loadData} from './data/loadData.js';
 import {updateBoard} from './data/loadBoard.js';
+import {saveCurrentPlayer} from './data/saveCurrentPlayer.js';
+import {loadCurrentPlayer} from './data/loadCurrentPlayer.js';
 
 loadData().then((options)=>{
   renderLogic(options);
@@ -53,12 +55,13 @@ function renderLogic(currentOptions){
   async function updateCell(cell,index){  
     options[index] = currentPlayer;  // stores currentPlayer in options Array with index of clicked cell
     cell.innerHTML = currentPlayer;  // prints currentPlayer on the screen ('this' element wich was clicked)
-    //await saveHTML(cell,currentPlayer)
     checkWinner();
     try {
       await saveData(options); //backend - save data
       if(running){           // if game is still running change player
         changePlayer();
+        await saveCurrentPlayer(currentPlayer);
+        // console.log(currentPlayer);
       }
     } catch (error) {
       console.error('Failed to update data:', error);

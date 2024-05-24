@@ -10,20 +10,13 @@ app.use(express.static(path.join(__dirname,'public')));
 const options = JSON.parse(fs.readFileSync('./backend/currentOption.json','utf-8'));
 const playerMove = JSON.parse(fs.readFileSync('./backend/currentPlayerMove.json','utf-8'));
 
-app.get('/',(req,res)=>{
+const loadPage = (req,res)=>{
   res.status(200).sendFile(__dirname,'public','index.html');
-});
-
-app.get('/option',(req,res)=>{
+};
+const getOptions = (req,res)=>{
   res.status(200).json(options);
-});
-
-app.get('/player',(req,res)=>{
-  res.status(200).json(playerMove);
-});
-
-
-app.post('/options',(req,res)=>{
+};
+const saveOptions = (req,res)=>{
   const clientOptions = req.body;
   console.log(clientOptions);
   fs.writeFile('./backend/currentOption.json',JSON.stringify(clientOptions),(err)=>{
@@ -32,9 +25,11 @@ app.post('/options',(req,res)=>{
     }
     res.status(200).json({clientOptions})
   })
-});
-
-app.post('/player', (req, res) => {
+};
+const getPlayerMove = (req,res)=>{
+  res.status(200).json(playerMove);
+};
+const savePlayerMove =  (req, res) => {
   let playerMove = req.body;
   console.log('Player move:', playerMove);
   fs.writeFile('./backend/currentPlayerMove.json',JSON.stringify(playerMove),(err)=>{
@@ -43,7 +38,18 @@ app.post('/player', (req, res) => {
     }
   })
   res.status(200).json({ message: 'Player move received', data: req.body });
-});
+}
+
+app.get('/', loadPage);
+
+// app.get('/option', getOptions);
+// app.post('/option', saveOptions);
+
+// app.get('/player', getPlayerMove);
+// app.post('/player',savePlayerMove);
+
+app.route('/option').get(getOptions).post(saveOptions);
+app.route('/player').get(getPlayerMove).post(savePlayerMove);
 
 const port = 3000;
 app.listen(port,()=>{

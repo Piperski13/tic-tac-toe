@@ -51,7 +51,4 @@ app.get('/', loadPage);
 app.route('/option').get(getOptions).post(saveOptions);
 app.route('/player').get(getPlayerMove).post(savePlayerMove);
 
-const port = 3000;
-app.listen(port,()=>{
-  console.log(`Port ${port} is listening for a request...`);
-});
+module.exports = app;

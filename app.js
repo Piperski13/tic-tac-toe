@@ -15,6 +15,7 @@ const loadPage = (req,res)=>{
 
 app.get('/', loadPage);
 
+// first version of the logic
 // app.get('/option', getOptions);
 // app.post('/option', saveOptions);
 

@@ -22,7 +22,7 @@ The Tic-Tac-Toe Project is a web application that allows users to play the class
 To set up and run this project locally, follow these steps:
 
 1. **Clone the repository:**
-   `git clone https://github.com/username/tic-tac-toe-project.git`
+   `git clone https://github.com/Piperski13/tic-tac-toe.git`
 2. **Navigate to the project directory:**
    `tic-tac-toe-project`
 3. **Install the dependencies:**
